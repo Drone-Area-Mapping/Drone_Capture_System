@@ -1,14 +1,15 @@
 #include "Capture_Class.h"
 
-int Capture_Class::initialize() {
+Mat Capture_Class::initialize() {
 
 	VideoCapture cap(port);
 
 	if (!cap.isOpened()) {
-		return -1;
+
+		return imageError;
 	}
 
-	while (1) {
+	while (true) {
 
 		cap.read(frameVideo);
 		imshow("video", frameVideo);
@@ -16,13 +17,14 @@ int Capture_Class::initialize() {
 		if (waitKey(1) == 's') {
 			image = capture();
 			imshow("picture", image);
+			return image;
 		}
 		else if (waitKey(1) == 'c') {
 			break;
 		}
 
 	}
-	return 0;
+	return image ;
 
 
 };

@@ -2,6 +2,7 @@
 
 int main() {
 
-	captureClass.initialize();
+		imageToSave = captureClass.initialize();
+		saveClass.saveImage(imageToSave);
 
 }

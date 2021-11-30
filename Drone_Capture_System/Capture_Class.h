@@ -11,17 +11,23 @@ class Capture_Class
 {
 
 private:
+	Mat imageError;
+	Mat framePicture;
+	Mat image;
+
+	Mat capture();
+
 
 public:
 
 	Mat frameVideo;
-	Mat framePicture;
-	Mat image;
-	int initialize();
 
-	Mat capture();
+	int port = 0;
 
-	int port=0;
+	Mat initialize();
+
+
+
 
 };
 
