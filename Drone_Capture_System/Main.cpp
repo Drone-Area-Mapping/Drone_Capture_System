@@ -4,4 +4,4 @@ int main() {
 
 	captureClass.initialize();
 
-};
+}

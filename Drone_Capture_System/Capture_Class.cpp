@@ -14,7 +14,8 @@ int Capture_Class::initialize() {
 		imshow("video", frameVideo);
 
 		if (waitKey(1) == 's') {
-			capture();
+			image = capture();
+			imshow("picture", image);
 		}
 		else if (waitKey(1) == 'c') {
 			break;

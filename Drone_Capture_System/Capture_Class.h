@@ -12,13 +12,11 @@ class Capture_Class
 
 private:
 
-	
-
 public:
 
 	Mat frameVideo;
 	Mat framePicture;
-	Mat Image;
+	Mat image;
 	int initialize();
 
 	Mat capture();
