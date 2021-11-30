@@ -1,9 +1,0 @@
-.vs/
-x64/
-x86/
-
-*.log
-*.tlog
-*.user
-.tlog
-.tlog/*
