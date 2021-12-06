@@ -25,7 +25,7 @@ public:
 
 	stringstream ss;
 
-	void saveImage(Mat inputImageRGB, Mat inputImageFLIR, Mat inputImageNVDI, int inputAmountImages);
+	void saveImage(Mat inputImageNVDI, int inputAmountImages);
 
 };
 
