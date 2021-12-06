@@ -5,12 +5,10 @@ int main() {
 	while (true)
 	{
 
-		if(gpsrange>setRange)saveClass.saveImage(captureClass.capureRGB, "RGB");
-
-
-
-		imageToSaveNDVI = captureClass.initialize();
-		saveClass.saveImage(imageToSaveNDVI, ct);
+		captureClass.debug();
+		saveClass.saveImage(captureClass.captureRGB(), ct, "RGB" );
+		saveClass.saveImage(captureClass.captureNVDI(), ct, "NVDI");
+		saveClass.saveImage(captureClass.captureFLIR(), ct, "FLIR");
 
 		ct++;
 

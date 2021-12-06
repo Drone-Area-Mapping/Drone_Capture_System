@@ -1,12 +1,12 @@
 #include "Save_Class.h"
 
-void Save_Class::saveImage(Mat inputImage, int inputAmoutImages) {
+void Save_Class::saveImage(Mat inputImage, int inputAmoutImages, string inputImageString) {
 
-	// to build sequential file names
 	imageToSave = inputImage;
+	imageString = inputImageString;
 	nr = inputAmoutImages;
 
-	name = "RGB_";
+	name = imageString;
 	type = ".jpg";
 
 	ss << name << (nr + 1) << type;
@@ -16,9 +16,7 @@ void Save_Class::saveImage(Mat inputImage, int inputAmoutImages) {
 
 	imwrite(filename, imageToSave);
 
-	//to build folder name
-
-	foldername = "RGB";
+	foldername = imageString;
 	folderCreateCommand = "mkdir " + foldername;
 
 	system(folderCreateCommand.c_str());

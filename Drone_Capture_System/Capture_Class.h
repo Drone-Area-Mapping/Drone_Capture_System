@@ -19,9 +19,7 @@ private:
 	Mat imageFLIR;
 	Mat imageNVDI;
 
-	Mat captureRGB();
-	Mat captureNVDI();
-	Mat captureFLIR();
+
 
 
 public:
@@ -30,12 +28,11 @@ public:
 	Mat frameVideoNVDI;
 	Mat frameVideoFLIR;
 
-	int port = 0;
+	Mat captureRGB();
+	Mat captureNVDI();
+	Mat captureFLIR();
 
-	Mat initialize();
-
-
-
+	void debug();
 
 };
 

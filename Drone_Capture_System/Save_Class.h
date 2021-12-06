@@ -15,6 +15,7 @@ private:
 	string foldername;
 	string folderCreateCommand;
 	string fullPath;
+	string imageString;
 
 	int nr = 0;
 
@@ -25,7 +26,7 @@ public:
 
 	stringstream ss;
 
-	void saveImage(Mat inputImageNVDI, int inputAmountImages);
+	void saveImage(Mat inputImage, int inputAmountImages, string inputImageString);
 
 };
 

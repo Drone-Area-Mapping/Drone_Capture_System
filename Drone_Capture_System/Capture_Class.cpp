@@ -1,47 +1,26 @@
 #include "Capture_Class.h"
 
-Mat Capture_Class::initialize() {
+VideoCapture  capRGB(0), capNVDI(1), capFLIR(2);
 
-	VideoCapture capRGB(port);
-	VideoCapture capNVDI(1);
-	VideoCapture capFLIR(2);
+void Capture_Class::debug() {
 
+	
+		if (waitKey(30) == 's') {
 
-	if (!capRGB.isOpened() /*|| !capNVDI.isOpened()*/) {
-
-		return imageError;
-	}
-
-	while (true) {
-
-		capRGB.read(frameVideoRGB);
-		capNVDI.read(frameVideoNVDI);
-		capFLIR.read(frameVideoFLIR);
-		imshow("videoRGB", frameVideoRGB);
-		imshow("videoFLIR", frameVideoFLIR);
-		imshow("videoNVDI", frameVideoNVDI);
-
-		if (waitKey(1) == 's') {
-			imageRGB = captureRGB();
+		    imageRGB = captureRGB();
 			imageFLIR = captureFLIR();
 			imageNVDI = captureNVDI();
 			imshow("RGB", imageRGB);
 			imshow("FLIR", imageFLIR);
 			imshow("NVDI", imageNVDI);
-
-			return imageRGB, imageFLIR, imageNVDI;
-		}
-		else if (waitKey(1) == 'c') {
-			break;
 		}							   
-
-	}
-	return imageRGB, imageFLIR, imageNVDI;
-
 
 };
 
-Mat Capture_Class::captureRGB() {
+Mat Capture_Class::captureRGB() { 
+
+	capRGB.read(frameVideoRGB);
+	imshow("RGB video", frameVideoRGB);
 
 	framePictureRGB = frameVideoRGB.clone();
 
@@ -51,6 +30,9 @@ Mat Capture_Class::captureRGB() {
 
 Mat Capture_Class::captureNVDI() {
 
+	capNVDI.read(frameVideoNVDI);
+	imshow("NVDI Video", frameVideoNVDI);
+	
 	framePictureNVDI = frameVideoNVDI.clone();
 
 	return framePictureNVDI;
@@ -58,6 +40,9 @@ Mat Capture_Class::captureNVDI() {
 }  
 
 Mat Capture_Class::captureFLIR() {
+
+	capFLIR.read(frameVideoFLIR);
+	imshow("FLIR video", frameVideoFLIR);
 
 	framePictureFLIR = frameVideoNVDI.clone();
 
