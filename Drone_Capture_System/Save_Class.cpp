@@ -1,14 +1,15 @@
 #include "Save_Class.h"
 
-void Save_Class::saveImage(Mat inputImage) {
+void Save_Class::saveImage(Mat inputImage, int inputAmoutImages) {
 
 	// to build sequential file names
 	imageToSave = inputImage;
+	nr = inputAmoutImages;
 
 	name = "RGB_";
 	type = ".jpg";
 
-	ss << name << (ct + 1) << type;
+	ss << name << (nr + 1) << type;
 
 	filename = ss.str();
 	ss.str("");
@@ -22,7 +23,7 @@ void Save_Class::saveImage(Mat inputImage) {
 
 	system(folderCreateCommand.c_str());
 
-	ss << foldername << "/" << name << (ct + 1) << type;
+	ss << foldername << "/" << name << (nr + 1) << type;
 
 	fullPath = ss.str();
 	ss.str("");

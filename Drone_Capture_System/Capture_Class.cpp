@@ -2,38 +2,65 @@
 
 Mat Capture_Class::initialize() {
 
-	VideoCapture cap(port);
+	VideoCapture capRGB(port);
+	VideoCapture capNVDI(1);
+	VideoCapture capFLIR(2);
 
-	if (!cap.isOpened()) {
+
+	if (!capRGB.isOpened() /*|| !capNVDI.isOpened()*/) {
 
 		return imageError;
 	}
 
 	while (true) {
 
-		cap.read(frameVideo);
-		imshow("video", frameVideo);
+		capRGB.read(frameVideoRGB);
+		capNVDI.read(frameVideoNVDI);
+		capFLIR.read(frameVideoFLIR);
+		imshow("videoRGB", frameVideoRGB);
+		imshow("videoFLIR", frameVideoFLIR);
+		imshow("videoNVDI", frameVideoNVDI);
 
 		if (waitKey(1) == 's') {
-			image = capture();
-			imshow("picture", image);
-			return image;
+			imageRGB = captureRGB();
+			imageFLIR = captureFLIR();
+			imageNVDI = captureNVDI();
+			imshow("RGB", imageRGB);
+			imshow("FLIR", imageFLIR);
+			imshow("NVDI", imageNVDI);
+
+			return imageRGB, imageFLIR, imageNVDI;
 		}
 		else if (waitKey(1) == 'c') {
 			break;
-		}
+		}							   
 
 	}
-	return image ;
+	return imageRGB, imageFLIR, imageNVDI;
 
 
 };
 
-Mat Capture_Class::capture() {
+Mat Capture_Class::captureRGB() {
 
-	framePicture = frameVideo.clone();
+	framePictureRGB = frameVideoRGB.clone();
 
-	return framePicture;
-
+	return framePictureRGB;
 
 };
+
+Mat Capture_Class::captureNVDI() {
+
+	framePictureNVDI = frameVideoNVDI.clone();
+
+	return framePictureNVDI;
+
+}  
+
+Mat Capture_Class::captureFLIR() {
+
+	framePictureFLIR = frameVideoNVDI.clone();
+
+	return framePictureFLIR;
+
+}

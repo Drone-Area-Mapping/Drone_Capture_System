@@ -5,4 +5,7 @@
 Capture_Class captureClass;
 Save_Class saveClass;
 
-Mat imageToSave;
+Mat imageToSaveRGB;
+Mat imageToSaveNDVI;
+Mat imageToSaveFLIR;
+int ct = 0;

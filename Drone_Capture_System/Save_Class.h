@@ -16,14 +16,16 @@ private:
 	string folderCreateCommand;
 	string fullPath;
 
-	int ct = 0;
+	int nr = 0;
+
+	
 
 
 public:
 
 	stringstream ss;
 
-	void saveImage(Mat inputImage);
+	void saveImage(Mat inputImageRGB, Mat inputImageFLIR, Mat inputImageNVDI, int inputAmountImages);
 
 };
 
