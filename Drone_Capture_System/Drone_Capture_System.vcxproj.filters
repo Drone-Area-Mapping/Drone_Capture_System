@@ -24,6 +24,9 @@
     <ClCompile Include="Save_Class.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="GPS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h">
@@ -33,6 +36,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Save_Class.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GPS.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

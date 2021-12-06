@@ -155,11 +155,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Capture_Class.cpp" />
+    <ClCompile Include="GPS.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Save_Class.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Capture_Class.h" />
+    <ClInclude Include="GPS.h" />
     <ClInclude Include="Main.h" />
     <ClInclude Include="Save_Class.h" />
   </ItemGroup>
