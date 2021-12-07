@@ -1,21 +1,13 @@
 #include "Capture_Class.h"
 
+int Capture_Class::portInitializing() {
+
+
+
+}
+
+
 VideoCapture  capRGB(0), capNVDI(1), capFLIR(2);
-
-void Capture_Class::debug() {
-
-	
-		if (waitKey(30) == 's') {
-
-		    imageRGB = captureRGB();
-			imageFLIR = captureFLIR();
-			imageNVDI = captureNVDI();
-			imshow("RGB", imageRGB);
-			imshow("FLIR", imageFLIR);
-			imshow("NVDI", imageNVDI);
-		}							   
-
-};
 
 Mat Capture_Class::captureRGB() { 
 

@@ -4,8 +4,7 @@
 
 Capture_Class captureClass;
 Save_Class saveClass;
-
-Mat imageToSaveRGB;
-Mat imageToSaveNDVI;
-Mat imageToSaveFLIR;
+//GPS gps;
 int ct = 0;
+
+bool running = true;

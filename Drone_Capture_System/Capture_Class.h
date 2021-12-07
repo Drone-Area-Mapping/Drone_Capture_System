@@ -1,6 +1,7 @@
 #pragma once
 
 #include "opencv2/opencv.hpp"
+#include <sstream>
 
 using namespace cv;
 using namespace std;
@@ -11,28 +12,27 @@ class Capture_Class
 {
 
 private:
-	Mat imageError;
 	Mat framePictureRGB;
 	Mat framePictureNVDI;
 	Mat framePictureFLIR;
-	Mat imageRGB;
-	Mat imageFLIR;
-	Mat imageNVDI;
+
+	Mat frameVideoRGB;
+	Mat frameVideoNVDI;
+	Mat frameVideoFLIR;
+	
 
 
 
 
 public:
 
-	Mat frameVideoRGB;
-	Mat frameVideoNVDI;
-	Mat frameVideoFLIR;
+
 
 	Mat captureRGB();
 	Mat captureNVDI();
 	Mat captureFLIR();
 
-	void debug();
+	int portInitializing();
 
 };
 

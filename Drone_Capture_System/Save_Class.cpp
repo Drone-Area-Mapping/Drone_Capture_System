@@ -7,21 +7,13 @@ void Save_Class::saveImage(Mat inputImage, int inputAmoutImages, string inputIma
 	nr = inputAmoutImages;
 
 	name = imageString;
-	type = ".jpg";
-
-	ss << name << (nr + 1) << type;
-
-	filename = ss.str();
-	ss.str("");
-
-	imwrite(filename, imageToSave);
 
 	foldername = imageString;
 	folderCreateCommand = "mkdir " + foldername;
 
 	system(folderCreateCommand.c_str());
 
-	ss << foldername << "/" << name << (nr + 1) << type;
+	ss << foldername << "/" << name << (nr) << type;
 
 	fullPath = ss.str();
 	ss.str("");
@@ -29,3 +21,27 @@ void Save_Class::saveImage(Mat inputImage, int inputAmoutImages, string inputIma
 	imwrite(fullPath, imageToSave);
 
 };
+
+void Save_Class::saveGps(int inputAmoutImages, string inputNameTxt, string inputGpsLla, string inputGpsGga) {
+
+	ofstream write;
+
+	write.open("GpsCoordinates.txt", ios_base::app | ios_base::in);
+
+	if (write.is_open()) {
+
+		gpsLla = inputGpsLla;
+		gpsGga = inputGpsGga;
+		nr = inputAmoutImages;
+
+		
+		s << nr << ":" << gpsLla << "	" << nr << ":" << gpsGga << endl;
+		outputString = s.str();
+		write << outputString;
+		s.str(string());
+	}
+	else { cout << "ERROR!\n"; }
+
+
+
+}
