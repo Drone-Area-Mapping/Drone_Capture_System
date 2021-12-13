@@ -1,11 +1,5 @@
 #include "Capture_Class.h"
 
-int Capture_Class::portInitializing() {
-
-
-
-}
-
 
 VideoCapture  capRGB(0), capNVDI(1), capFLIR(2);
 
