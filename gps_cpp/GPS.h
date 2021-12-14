@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <errno.h>
 #include <vector>
+#include <sstream>
 
 using namespace std;
 
@@ -18,8 +19,8 @@ class GPS
         void update();
         string getGLL();
         string getGGA();
-		vector<string> getLonGGA();
-		vector<string> getLatGGA();
+		string getLonGGA();
+		string getLatGGA();
 
     private:
         bool setData(std::string);

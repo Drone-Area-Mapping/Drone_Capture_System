@@ -56,19 +56,39 @@ string GPS::getGGA()
     return GPGGA;
 }
 
-vector<string>& GPS::getLonGGA() {
+string GPS::getLonGGA() {
 
 	//data = GPGGA;
 	data = "$GPGGA,1714.0,3723.465874,N,12202.26954,W,2,6,1.2,18.893,M,-25.669,M,2.0,0031*4F";
 
-		string s;
-		vector<string> elems;
-		stringstream ss(s);
-		string item;
-		while (std::getline(ss, item, delim)) {
-			elems.push_back(item);
-		}
-		return elems;
+	int nth1 = 2;
+	size_t pos1 = 0;
+	int cnt1 = 0;
+
+	while (cnt1 != nth1)
+	{
+		pos1 += 1;
+		pos1 = data.find(target, pos1);
+		if (pos1 == string::npos)
+			break;
+		cnt1++;
+	}
+
+	int nth2 = 2;
+	size_t pos2 = 0;
+	int cnt2 = 0;
+
+	while (cnt2 != nth2)
+	{
+		pos2 += 1;
+		pos2 = data.find(target, pos2);
+		if (pos2 == string::npos)
+			break;
+		cnt2++;
+	}
+
+	return data.substr(pos1, pos2);
+
 
 }
 
@@ -77,5 +97,33 @@ string GPS::getLatGGA() {
 	//data = GPGGA;
 
 	data = "$GPGGA,1714.0,3723.465874,N,12202.26954,W,2,6,1.2,18.893,M,-25.669,M,2.0,0031*4F";
+	
+	int nth1 = 2;
+	size_t pos1 = 0;
+	int cnt1 = 0;
+
+	while (cnt1 != nth1)
+	{
+		pos1 += 1;
+		pos1 = data.find(target, pos1);
+		if (pos1 == string::npos)
+			break;
+		cnt1++;
+	}
+
+	int nth2 = 2;
+	size_t pos2 = 0;
+	int cnt2 = 0;
+
+	while (cnt2 != nth2)
+	{
+		pos2 += 1;
+		pos2 = data.find(target, pos2);
+		if (pos2 == string::npos)
+			break;
+		cnt2++;
+	}
+	
+	return data.substr(pos1, pos2);
 
 }
