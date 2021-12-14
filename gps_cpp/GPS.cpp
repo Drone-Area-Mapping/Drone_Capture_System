@@ -56,7 +56,7 @@ string GPS::getGGA()
     return GPGGA;
 }
 
-string GPS::getLonGGA() {
+double GPS::getLonGGA() {
 
 	//data = GPGGA;
 	data = "$GPGGA,1714.0,3723.465874,N,12202.26954,W,2,6,1.2,18.893,M,-25.669,M,2.0,0031*4F";
@@ -74,7 +74,7 @@ string GPS::getLonGGA() {
 		cnt1++;
 	}
 
-	int nth2 = 2;
+	int nth2 = 3;
 	size_t pos2 = 0;
 	int cnt2 = 0;
 
@@ -87,7 +87,24 @@ string GPS::getLonGGA() {
 		cnt2++;
 	}
 
-	return data.substr(pos1, pos2);
+	string lon = data.substr(pos1 + 1, pos2 - pos1);
+
+	int point = lon.find(".", point);
+
+	int lengthLon = lon.length();
+	string minutes = lon.substr(point - 2, lengthLon-2);
+	string degrees = lon.substr(0, 2);
+
+	double minDouble = stod(minutes);
+	double minToDeg = minFloat / 60;
+
+	double degDouble = stod(degrees);
+
+	double totaldeg = degDouble + minToDeg;
+
+	//cout << minutes.c_str() << endl;
+
+	return totaldeg;
 
 
 }
@@ -98,7 +115,7 @@ string GPS::getLatGGA() {
 
 	data = "$GPGGA,1714.0,3723.465874,N,12202.26954,W,2,6,1.2,18.893,M,-25.669,M,2.0,0031*4F";
 	
-	int nth1 = 2;
+	int nth1 = 4;
 	size_t pos1 = 0;
 	int cnt1 = 0;
 
@@ -111,7 +128,7 @@ string GPS::getLatGGA() {
 		cnt1++;
 	}
 
-	int nth2 = 2;
+	int nth2 = 5;
 	size_t pos2 = 0;
 	int cnt2 = 0;
 
@@ -123,7 +140,25 @@ string GPS::getLatGGA() {
 			break;
 		cnt2++;
 	}
+
+	string lat = data.substr(pos1 + 1, pos2 - pos1);
+
+	int point = lat.find(".", point);
+
+	int lengthLat = lat.length();
+	string minutes = lat.substr(point - 2, lengthLat - 2);
+	string degrees = lat.substr(0, 3);
+
+	double minDouble = stod(minutes);
+	double minToDeg = minFloat / 60;
+
+	double degDouble = stod(degrees);
+
+	double totaldeg = degDouble + minToDeg;;
+
+
+
 	
-	return data.substr(pos1, pos2);
+	return totaldeg;
 
 }

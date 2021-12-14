@@ -19,8 +19,8 @@ class GPS
         void update();
         string getGLL();
         string getGGA();
-		string getLonGGA();
-		string getLatGGA();
+		double getLonGGA();
+		double getLatGGA();
 
     private:
         bool setData(std::string);
