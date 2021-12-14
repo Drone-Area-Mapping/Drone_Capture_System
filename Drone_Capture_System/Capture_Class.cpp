@@ -1,7 +1,7 @@
 #include "Capture_Class.h"
 
 
-VideoCapture  capRGB(0), capNVDI(1), capFLIR(2);
+VideoCapture  capRGB(0);/*, capNVDI(1), capFLIR(2);*/
 
 Mat Capture_Class::captureRGB() { 
 
@@ -14,24 +14,24 @@ Mat Capture_Class::captureRGB() {
 
 };
 
-Mat Capture_Class::captureNVDI() {
-
-	capNVDI.read(frameVideoNVDI);
-	imshow("NVDI Video", frameVideoNVDI);
-	
-	framePictureNVDI = frameVideoNVDI.clone();
-
-	return framePictureNVDI;
-
-}  
-
-Mat Capture_Class::captureFLIR() {
-
-	capFLIR.read(frameVideoFLIR);
-	imshow("FLIR video", frameVideoFLIR);
-
-	framePictureFLIR = frameVideoNVDI.clone();
-
-	return framePictureFLIR;
-
-}
+//Mat Capture_Class::captureNVDI() {
+//
+//	capNVDI.read(frameVideoNVDI);
+//	imshow("NVDI Video", frameVideoNVDI);
+//	
+//	framePictureNVDI = frameVideoNVDI.clone();
+//
+//	return framePictureNVDI;
+//
+//}  
+//
+//Mat Capture_Class::captureFLIR() {
+//
+//	capFLIR.read(frameVideoFLIR);
+//	imshow("FLIR video", frameVideoFLIR);
+//
+//	framePictureFLIR = frameVideoNVDI.clone();
+//
+//	return framePictureFLIR;
+//
+//}

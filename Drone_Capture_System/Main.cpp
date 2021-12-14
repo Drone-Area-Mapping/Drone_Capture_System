@@ -7,44 +7,32 @@ int main(int, char**) {
 		while (running)
 		{
 			//gps.update()
-			//lat1d = gps.getGGL().str();
-			//lat2d = gps.getGGA().str();
 			if (testNumberCurrent == 0) {
-				lat1d = 51.59298536754441;
-				lon1d = 4.8020262287023865;
+				 test = "$GPGGA,161229.487,3723.24756,N,12158.34162,W,1,07,1.0,9.0,M, , , ,0000*18";
 			}
-			else if (testNumberCurrent == 1) {
-
-				lat1d = 51.59297203709918;
-				lon1d = 4.802750425125821;
+			if (testNumberCurrent == 1) {
+				test = "$GPGGA,161229.487,3723.2368,N,12158.52526,W,1,07,1.0,9.0,M, , , ,0000*18";
 			}
-			else if (testNumberCurrent == 2) {
 
-				lat1d = 51.59298536754441;
-				lon1d = 4.8034853503851584;
+			gps.getGGA(test);
+			lat1d = gps.getLatGGA();
+			lon1d = gps.getLonGGA();
 
-			}
-			else if (testNumberCurrent == 3) {
-
-				lat1d = 51.59252546492298;
-				lon1d = 4.803603367580089;
-
-			}
 
 
 			
 			testNumberCurrent++;
 
 			testNumberDifference = triggerClass.calculateTrigggerDistance(testNumberCurrent, testNumberTrigger, lat1d, lon1d, triggerLat, triggerLon);
-			cout << to_string(testNumberDifference).c_str() <<"\n";
+			cout << to_string(testNumberDifference).c_str() <<"\n"; cout << to_string(testNumberDifference).c_str() << "\n"; cout << to_string(testNumberDifference).c_str() << "\n";
 											  
 			if (testNumberDifference >= distanceCapturing - gpsOffset) {
 
 				ct++;
 				saveClass.saveGps(ct, "GpsCoordinaten", to_string(lat1d), to_string(lon1d));
 				saveClass.saveImage(captureClass.captureRGB(), ct, "RGB");
-				saveClass.saveImage(captureClass.captureNVDI(), ct, "NVDI");
-				saveClass.saveImage(captureClass.captureFLIR(), ct, "FLIR");
+				//saveClass.saveImage(captureClass.captureNVDI(), ct, "NVDI");
+				//saveClass.saveImage(captureClass.captureFLIR(), ct, "FLIR");
 				testNumberTrigger = testNumberCurrent;
 				triggerLat = lat1d;
 				triggerLon = lon1d;
@@ -54,7 +42,7 @@ int main(int, char**) {
 
 
 
-			if (ct >= 4) {
+			if (ct >= 2) {
 				
 				running = false;
 				return running;
