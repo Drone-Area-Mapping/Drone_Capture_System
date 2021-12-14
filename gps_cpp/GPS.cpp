@@ -4,14 +4,14 @@ using namespace std;
 
 GPS::GPS()
 {
-    cout << "initializing GPS...\n";
-    initialize();
-    for(int i = 0; i < 100; i++)
-    {
-        putchar(serialGetchar(fd));
-        fflush(stdout);
-    }
-    cout << "\nGPS succesfully initialized!\n";
+    //cout << "initializing GPS...\n";
+    //initialize();
+    //for(int i = 0; i < 100; i++)
+    //{
+    //    putchar(serialGetchar(fd));
+    //    fflush(stdout);
+    //}
+    //cout << "\nGPS succesfully initialized!\n";
 };
 GPS::~GPS()
 {
@@ -54,4 +54,28 @@ string GPS::getGLL()
 string GPS::getGGA()
 {
     return GPGGA;
+}
+
+vector<string>& GPS::getLonGGA() {
+
+	//data = GPGGA;
+	data = "$GPGGA,1714.0,3723.465874,N,12202.26954,W,2,6,1.2,18.893,M,-25.669,M,2.0,0031*4F";
+
+		string s;
+		vector<string> elems;
+		stringstream ss(s);
+		string item;
+		while (std::getline(ss, item, delim)) {
+			elems.push_back(item);
+		}
+		return elems;
+
+}
+
+string GPS::getLatGGA() {
+
+	//data = GPGGA;
+
+	data = "$GPGGA,1714.0,3723.465874,N,12202.26954,W,2,6,1.2,18.893,M,-25.669,M,2.0,0031*4F";
+
 }

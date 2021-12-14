@@ -14,8 +14,10 @@ int main()
     GPS gps;
     while(true)
     {
-        gps.update();
-        cout << "GLL data: " << gps.getGLL().c_str() << endl;
-        cout << "GGA data: " << gps.getGGA().c_str() << endl;
+        //gps.update();
+		vector<string> token = gps.getLonGGA();
+		cout << token << endl;
+        //cout << "GLL data: " << gps.getGLL().c_str() << endl;
+        //cout << "GGA data: " << gps.getGGA().c_str() << endl;
     };
 }

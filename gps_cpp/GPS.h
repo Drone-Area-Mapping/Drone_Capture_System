@@ -4,7 +4,9 @@
 #include <wiringSerial.h>
 #include <stdio.h>
 #include <errno.h>
+#include <vector>
 
+using namespace std;
 
 
 class GPS
@@ -14,18 +16,19 @@ class GPS
         ~GPS();
         int initialize();
         void update();
-        std::string getLocation();
-        int calculateDistance();
-        void setStep();
-        std::string getGLL();
-        std::string getGGA();
+        string getGLL();
+        string getGGA();
+		vector<string> getLonGGA();
+		vector<string> getLatGGA();
 
     private:
         bool setData(std::string);
         int fd = 0;
         char inputChar;
-        std::string inputString = "";
-        std::string serialPort = "/dev/ttyS0";
-        std::string GPGLL;
-        std::string GPGGA;
+        string inputString = "";
+        string serialPort = "/dev/ttyS0";
+        string GPGLL;
+        string GPGGA;
+		string data;
+		string target = ",";
 };
