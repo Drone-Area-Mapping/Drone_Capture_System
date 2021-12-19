@@ -14,17 +14,17 @@ using namespace std;
 class GPS
 {
 public:
-	//GPS();
-	//~GPS();
-	//int initialize();
-	//void update();
+	GPS();
+	~GPS();
+	int initialize();
+	void update();
 	//string getGLL();
-	string getGGA(string test);
+	string getGGA();
 	double getLonGGA();
 	double getLatGGA();
 
 private:
-	//bool setData(std::string);
+	bool setData(std::string);
 	int fd = 0;
 	char inputChar;
 	string inputString = "";

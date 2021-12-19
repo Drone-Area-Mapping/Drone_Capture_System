@@ -16,8 +16,6 @@ double Trigger_Class::calculateTrigggerDistance(int inputCoordinateCurrent, int 
 	v = sin((lon2r - lon1r) / 2);
 	return 2.0 * earthRadiusKm*1000 * asin(sqrt(u * u + cos(lat1r) * cos(lat2r) * v * v));
 
-	//return differenceDistance;
-
 
 }
 
